@@ -6,10 +6,6 @@ int menu();
 void mines();
 void multiply();
 void divide();
-int leaderboard_plus();
-int leaderboard_minus();
-int leaderboard_multiply();
-int leaderboard_divide();
 typedef struct{
     char nama[20];
     int poin;
@@ -79,6 +75,12 @@ void Leaderboards(const char *filename, const char *nama, const int poin){
         fprintf(fp,"%s %d\n",entry[i].nama,entry[i].poin);
     }
     fclose(fp);
+    
+    printf("\n=== Top 5 Leaderboard ===\n");
+    for (int i = 0; i < e && i < 5; i++) { 
+        printf("%d. %s - %d points\n", i + 1, entry[i].nama, entry[i].poin);
+    printf("=========================\n");
+    }
 }
 
 void plus(){
