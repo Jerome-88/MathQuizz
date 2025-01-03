@@ -6,6 +6,7 @@ int menu();
 void mines();
 void multiply();
 void divide();
+//struct Leadrboard : untuk menampung nama dan poin yang akan disimpan dalam file txt
 typedef struct{
     char nama[20];
     int poin;
@@ -18,7 +19,7 @@ int main() {
     menu();
     return 0;
 }
-
+//menu() : menampilkan menu dan mengarahkan ke fungsi atau fitur yang diinginkan pengguna(plus,mines,multiply,divide,exit).
 int menu(){
     system("cls");
     int a;
@@ -43,7 +44,8 @@ int menu(){
     }
 }
 
-
+//Leaderboards() : menyimpan poin setiap orang ke dalam file txt ketika terjadi game over(nyawa habis). 
+//Setelah nama dan poin disimpan, poin semua orang dalam teks txt akan di sorting dan akan ditampilkan 5 perolehan poin tertinggi beserta namanya.
 void Leaderboards(const char *filename, const char *nama, const int poin){
     Leaderboard entry[100];
     int e = 0;
@@ -60,6 +62,7 @@ void Leaderboards(const char *filename, const char *nama, const int poin){
     entry[e].poin = poin;
     e++;
     int i,j;
+    //sorting poin
     for(i = 0; i< e-1; i++){
         for(j = i+1;j<e;j++){
             if(entry[i].poin < entry[j].poin){
@@ -75,14 +78,16 @@ void Leaderboards(const char *filename, const char *nama, const int poin){
         fprintf(fp,"%s %d\n",entry[i].nama,entry[i].poin);
     }
     fclose(fp);
-    
+    //menanpilkan leaderboard
     printf("\n=== Top 5 Leaderboard ===\n");
-    for (int i = 0; i < e && i < 5; i++) { 
+    for ( i = 0; i < e && i < 5; i++) { 
         printf("%d. %s - %d points\n", i + 1, entry[i].nama, entry[i].poin);
     printf("=========================\n");
     }
 }
-
+//plus() : sebuah fungsi yang akan berjalan ketika menu plus dipilih dan akan memberikan pertanyaan pertambahan 2 angka acak. 
+//Didalamnya terdapat tingkatan level dari 1 hingga 3 dimana level 1 angka nya akan berkisar dari 0 - 10, level 2 berkisar dari 0 - 100, level 3 berkisar dari 0 - 1000. 
+//level 1 masing-masing jawaban benar akan bernilai 1, level 2 bernilai 2 dan level 3 bernilai 5.
 void plus(){
     system("cls");
     int level,num1=0,num2=0,point=0,lives=3,answer,response;
@@ -158,6 +163,10 @@ void plus(){
         }
     }
 }
+//mines() : sebuah fungsi yang akan berjalan ketika menu mines dipilih dan akan memberikan pertanyaan pertambahan 2 angka acak. 
+//Didalamnya terdapat tingkatan level dari 1 hingga 3 dimana level 1 angka nya akan berkisar dari 0 - 10, level 2 berkisar dari 0 - 100, level 3 berkisar dari 0 - 1000. 
+//level 1 masing-masing jawaban benar akan bernilai 1, level 2 bernilai 2 dan level 3 bernilai 5. 
+
 void mines(){
     system("cls");
     int level,num1,num2,point=0,lives=3,answer,response;
@@ -233,6 +242,9 @@ void mines(){
         }
     }
 }
+//multiply() : sebuah fungsi yang akan berjalan ketika menu multiply dipilih dan akan memberikan pertanyaan pertambahan 2 angka acak. 
+//Didalamnya terdapat tingkatan level dari 1 hingga 3 dimana level 1 angka nya akan berkisar dari 0 - 10, level 2 berkisar dari 0 - 100, level 3 berkisar dari 0 - 1000. 
+//level 1 masing-masing jawaban benar akan bernilai 1, level 2 bernilai 2 dan level 3 bernilai 5.
 void multiply(){
     system("cls");
     int level,num1,num2,point=0,lives=3,answer,response;
@@ -308,6 +320,9 @@ void multiply(){
         }
     }
 }
+//divide() : sebuah fungsi yang akan berjalan ketika menu divide dipilih dan akan memberikan pertanyaan pertambahan 2 angka acak. 
+//Didalamnya terdapat tingkatan level dari 1 hingga 3 dimana level 1 angka nya akan berkisar dari 1 - 10, level 2 berkisar dari 1 - 100, level 3 berkisar dari 1 - 1000. 
+//level 1 masing-masing jawaban benar akan bernilai 1, level 2 bernilai 2 dan level 3 bernilai 5.
 void divide(){
     system("cls");
     int level,point=0,lives=3,response,num1,num2;
